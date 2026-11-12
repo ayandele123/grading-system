@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A clean, student-friendly polytechnic grade checker form.">
+    <title>Polytechnic grade checker | GradeGuide</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navigation container" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="GradeGuide home"><span class="brand-mark">G</span>GradeGuide</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="university.html">University</a>
+          <a class="active" aria-current="page" href="polytechnic.html">Polytechnic</a>
+          <a href="secondary.html">Secondary school</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="polytechnic-form-page">
+      <section class="polytechnic-form-section container">
+        <div class="polytechnic-intro">
+          <p class="eyebrow">POLYTECHNIC STUDENT TOOL</p>
+          <h1>Make your grades<br><span>easier to understand.</span></h1>
+          <p>Enter your cumulative GPA and use this simple form as a starting point for understanding your academic standing.</p>
+        </div>
+
+        <div class="polytechnic-form-layout">
+          <section class="polytechnic-form-card" aria-labelledby="checker-heading">
+            <div class="checker-card-heading">
+              <span class="checker-icon" aria-hidden="true">✦</span>
+              <div>
+                <p class="card-kicker">GRADE CHECKER</p>
+                <h2 id="checker-heading">Check your grade</h2>
+              </div>
+            </div>
+
+            <form class="grade-check-form">
+              <label for="student-score">Your cumulative GPA</label>
+              <p class="field-help" id="score-help">Enter a value from 0.00 to 4.00.</p>
+              <div class="score-input-wrap">
+                <input
+                  id="student-score"
+                  name="score"
+                  type="number"
+                  min="0"
+                  max="4"
+                  step="0.01"
+                  inputmode="decimal"
+                  placeholder="e.g. 3.25"
+                  aria-describedby="score-help"
+                >
+                <span class="score-scale" aria-hidden="true">/ 4.00</span>
+              </div>
+              <button class="grade-check-button" type="button" onclick="show()">Check your grade <span aria-hidden="true">→</span></button>
+            </form>
+
+            <section class="grade-output" aria-labelledby="output-label">
+              <span class="output-icon" aria-hidden="true">✧</span>
+              <div id="display">
+                Your grade shows here
+              </div>
+            </section>
+            <p class="form-disclaimer">Visual demo only — grade calculation is not connected.</p>
+          </section>
+
+          <aside class="checker-aside">
+            <div class="aside-orb" aria-hidden="true"></div>
+            <p class="aside-kicker">A CLEARER VIEW OF YOUR PROGRESS</p>
+            <h2>One result.<br>More confidence.</h2>
+            <p>Keep your academic goals in sight. For an official classification, always check your institution’s grading scale.</p>
+            <div class="scale-preview" aria-label="GPA scale from zero to four">
+              <div class="scale-preview-heading"><span>GPA SCALE</span><strong>0.00 — 4.00</strong></div>
+              <div class="scale-track" aria-hidden="true"><span></span></div>
+              <div class="scale-labels" aria-hidden="true"><span>0.00</span><span>4.00</span></div>
+            </div>
+            <div class="aside-note"><span aria-hidden="true">i</span><p>ND and HND grading rules may differ between institutions and programmes.</p></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <a class="brand footer-brand" href="index.html"><span class="brand-mark">G</span>GradeGuide</a>
+        <p>Helping students make sense of their grades.</p>
+        <p class="copyright">© 2026 GradeGuide. For guidance only.</p>
+      </div>
+    </footer>
+
+
+    <script>
+         function show(){
+            let welt = document.getElementById('student-score').value
+            let displayArea = document.getElementById('display')
+
+        if(welt==''){
+            alert('input cannot be empty')
+            return
+        }
+        // let overallScore = 5.0
+        // let score = welt
+        // console.log(score);
+        
+        if(welt.length>4 || welt>5.0){
+            alert('invalid input')
+              return
+        }
+        if(welt<=2.00){
+            displayArea.innerHTML = `<p>Fail</p>`
+        }
+      else if(welt<=2.49){
+             displayArea.innerHTML = `<p>Third class</p>`
+        }
+        else if(welt<=2.99){
+            displayArea.innerHTML = `<p>Second Classs lower</p>`
+        }
+        else if(welt<=3.49){
+            displayArea.innerHTML = `<p>Second class upper</p>`
+        }
+          else if(welt<=4.00){
+            displayArea.innerHTML = `<p>First class</p>`
+        }
+         }
+    </script>
+  </body>
+</html>
